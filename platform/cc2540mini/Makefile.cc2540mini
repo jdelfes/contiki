@@ -1,7 +1,8 @@
-CONTIKI_TARGET_DIRS = .
+CONTIKI_TARGET_DIRS = . dev
 CONTIKI_TARGET_MAIN = $(addprefix $(OBJECTDIR)/,contiki-main.rel)
 
 CONTIKI_SOURCEFILES += contiki-main.c
+CONTIKI_SOURCEFILES += leds.c leds-arch.c
 
 CLEAN += *.cc2540mini
 

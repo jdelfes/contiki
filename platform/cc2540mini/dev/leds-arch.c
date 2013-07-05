@@ -31,49 +31,37 @@
 
 /**
  * \file
- *   This is the Contiki main function from CC2540 mini board.
+ *   Implemetation of Contiki's LED API for CC2540 mini board.
  *
  * \author
  *   Andre Guedes <andre.guedes@openbossa.org>
  */
-#include "isr.h"
-#include "sys/clock.h"
-#include "sys/process.h"
-#include "sys/etimer.h"
-#include "sys/ctimer.h"
-#include "sys/autostart.h"
+
+#include "cc2540.h"
 #include "dev/leds.h"
 
-static void
-board_init(void)
+#define LED_GREEN_PIN      P1_0
+#define LED_RED_PIN        P1_1
+
+#define LED_GREEN_MASK     BIT(0)
+#define LED_RED_MASK       BIT(1)
+
+void
+leds_arch_init(void)
 {
-  clock_init();
-  leds_init();
-
-  leds_off(LEDS_ALL);
-
-  /* Enable all interrupts */
-  EA  = 1;
+  P1SEL &= ~(LED_GREEN_MASK | LED_RED_MASK);
+  P1DIR |= (LED_GREEN_MASK | LED_RED_MASK);
 }
 
-int
-main(void)
+unsigned char
+leds_arch_get(void)
 {
-  board_init();
+  return (unsigned char)(LED_GREEN_PIN | (LED_RED_PIN << 2));
+}
 
-  process_init();
-
-  /* Initialize timer processes */
-  process_start(&etimer_process, NULL);
-  ctimer_init();
-
-  autostart_start(autostart_processes);
-
-  leds_blink();
-
-  while (1) {
-    process_run();
-  }
-
-  return 0;
+void
+leds_arch_set(unsigned char leds)
+{
+  LED_GREEN_PIN = leds & LEDS_GREEN;
+  LED_RED_PIN = !!(leds & LEDS_RED);
 }
