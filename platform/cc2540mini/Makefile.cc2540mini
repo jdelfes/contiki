@@ -1,0 +1,9 @@
+CONTIKI_TARGET_DIRS = .
+CONTIKI_TARGET_MAIN = $(addprefix $(OBJECTDIR)/,contiki-main.rel)
+
+CONTIKI_SOURCEFILES += contiki-main.c
+
+CLEAN += *.cc2540mini
+
+CONTIKI_CPU=$(CONTIKI)/cpu/cc2540
+include $(CONTIKI_CPU)/Makefile.cc2540
