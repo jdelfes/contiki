@@ -35,6 +35,8 @@ CLEAN += symbols.c symbols.h
 
 CONTIKI_CPU_DIRS = .
 
+CONTIKI_SOURCEFILES += clock.c
+
 CONTIKI_ASMOBJECTFILES = $(addprefix $(OBJECTDIR)/,$(CONTIKI_ASMFILES:.S=.rel))
 
 CONTIKI_CASMOBJECTFILES = $(addprefix $(OBJECTDIR)/, \

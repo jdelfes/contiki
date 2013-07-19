@@ -49,6 +49,8 @@
 
 #include <compiler.h>
 
+#define BIT(n) (1UL << (n))
+
 /* Interrupt Numbers  */
 #define RFERR_IRQ     0  /* RF TXFIFO underflow and RXFIFO overflow. */
 #define ADC_IRQ       1  /* ADC end of conversion */
