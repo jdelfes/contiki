@@ -42,6 +42,7 @@
 #include "contiki-conf.h"
 
 #include "cc2540.h"
+#include "sys/etimer.h"
 
 #define JIFFY (1000 / CLOCK_CONF_SECOND)
 
@@ -112,6 +113,10 @@ sleep_timer_isr(void) __interrupt(ST_IRQ)
   ticks++;
 
   update_timer_value();
+
+  if (etimer_pending() && etimer_next_expiration_time() <= ticks) {
+    etimer_request_poll();
+  }
 
   /* Clear sleep timer interrupt flag */
   STIF = 0;
