@@ -13,7 +13,7 @@ CFLAGS  += --model-large --stack-auto --std-c99
 CFLAGS  += --fomit-frame-pointer
 
 LDFLAGS += --model-large --stack-auto --out-fmt-ihx
-LDFLAGS += --xram-loc 0x0000 --xram-size 0x1F00
+LDFLAGS += --xram-loc 0x0001 --xram-size 0x1F00
 LDFLAGS += --code-loc 0x00000 --code-size 0x10000
 
 ASFLAGS += -plosgff
