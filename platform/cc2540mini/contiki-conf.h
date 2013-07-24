@@ -55,4 +55,7 @@ typedef unsigned short uip_stats_t;
 #define CCIF
 #define CLIF
 
+#define UART0_CONF_ENABLE 1
+#define UART0_ALTERNATIVE_2
+
 #endif /* __CONTIKI_CONF_H__ */

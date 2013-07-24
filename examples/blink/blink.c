@@ -31,6 +31,7 @@
 
 #include "contiki.h"
 #include "dev/leds.h"
+#include "dev/uart0.h"
 
 static struct etimer t_blink;
 
@@ -47,6 +48,7 @@ PROCESS_THREAD(blink_process, ev, data)
     PROCESS_WAIT_EVENT_UNTIL(ev == PROCESS_EVENT_TIMER);
 
     leds_invert(LEDS_GREEN);
+    uart0_writeb(0x41);
 
     etimer_reset(&t_blink);
   }
