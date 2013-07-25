@@ -42,6 +42,7 @@
  *
  * \author
  *   Andre Guedes <andre.guedes@openbossa.org>
+ *   Paulo Borges <paulo.borges@openbossa.org>
  */
 
 #ifndef __CC2540_H__
@@ -324,5 +325,156 @@ SFRX(RFC_OBS_CTRL0,       0x61AE); /* RF Observation Mux Control 0 */
 SFRX(RFC_OBS_CTRL1,       0x61AF); /* RF Observation Mux Control 1 */
 SFRX(RFC_OBS_CTRL2,       0x61B0); /* RF Observation Mux Control 2 */
 SFRX(ATEST,               0x61A9); /* Analog Test Control */
+
+/* Bits from non bit-addressable SFRs */
+/* CLKCONCMD and CLKCONSTA */
+#define CLKCON_OSC32K    BIT(7)
+#define CLKCON_OSC       BIT(6)
+#define CLKCON_TICKSPD2  BIT(5)
+#define CLKCON_TICKSPD1  BIT(4)
+#define CLKCON_TICKSPD0  BIT(3)
+#define CLKCON_CLKSPD2   BIT(2)
+#define CLKCON_CLKSPD1   BIT(1)
+#define CLKCON_CLKSPD0   BIT(0)
+
+/* SLEEPCMD and SLEEPSTA */
+#define SLEEP_OSC32K_CALDIS  BIT(7)
+#define SLEEP_XOSC_STB       BIT(6)
+#define SLEEP_HFRC_STB       BIT(5)
+#define SLEEP_RST1           BIT(4) /* SLEEPSTA only */
+#define SLEEP_RST0           BIT(3) /* SLEEPSTA only */
+#define SLEEP_OSC_PD         BIT(2)
+#define SLEEP_MODE1          BIT(1)
+#define SLEEP_MODE0          BIT(0)
+
+/* PCON */
+#define PCON_IDLE BIT(0)
+
+/* T1CTL */
+#define T1CTL_DIV1  BIT(3)
+#define T1CTL_DIV0  BIT(2)
+#define T1CTL_MODE1 BIT(1)
+#define T1CTL_MODE0 BIT(0)
+
+/* T3CTL and T4CTL */
+#define TxCTL_DIV2  BIT(7)
+#define TxCTL_DIV1  BIT(6)
+#define TxCTL_DIV0  BIT(5)
+#define TxCTL_START BIT(4)
+#define TxCTL_OVFIM BIT(3)
+#define TxCTL_CLR   BIT(2)
+#define TxCTL_MODE1 BIT(1)
+#define TxCTL_MODE0 BIT(0)
+
+/* T1CCTL0, T1CCTL1, T3CCTL0, T3CCTL1, T4CCTL0 and T4CCTL1 */
+#define TxCCTLx_RFIRQ BIT(7) /* T1CCTL0 and T1CCTL1 only */
+#define TxCCTLx_IM    BIT(6)
+#define TxCCTLx_CMP2  BIT(5)
+#define TxCCTLx_CMP1  BIT(4)
+#define TxCCTLx_CMP0  BIT(3)
+#define TxCCTLx_MODE  BIT(2)
+#define TxCCTLx_CAP1  BIT(1)
+#define TxCCTLx_CAP0  BIT(0)
+
+/* T1STAT */
+#define T1STAT_OVFIF   BIT(5)
+#define T1STAT_CH4IF   BIT(4)
+#define T1STAT_CH3IF   BIT(3)
+#define T1STAT_CH2IF   BIT(2)
+#define T1STAT_CH1IF   BIT(1)
+#define T1STAT_CH0IF   BIT(0)
+
+/* WDCTL */
+#define WDCTL_CLR3  BIT(7)
+#define WDCTL_CLR2  BIT(6)
+#define WDCTL_CLR1  BIT(5)
+#define WDCTL_CLR0  BIT(4)
+#define WDCTL_MODE1 BIT(3)
+#define WDCTL_MODE0 BIT(2)
+#define WDCTL_INT1  BIT(1)
+#define WDCTL_INT0  BIT(0)
+
+/* ADCCON1 */
+#define ADCCON1_EOC     BIT(7)
+#define ADCCON1_ST      BIT(6)
+#define ADCCON1_STSEL1  BIT(5)
+#define ADCCON1_STSEL0  BIT(4)
+/* ADCCON1 - RNG bits */
+#define ADCCON1_RCTRL1  BIT(3)
+#define ADCCON1_RCTRL0  BIT(2)
+
+/* ADCCON2 */
+#define ADCCON2_SREF1 BIT(7)
+#define ADCCON2_SREF0 BIT(6)
+#define ADCCON2_SDIV1 BIT(5)
+#define ADCCON2_SDIV0 BIT(4)
+#define ADCCON2_SCH3  BIT(3)
+#define ADCCON2_SCH2  BIT(2)
+#define ADCCON2_SCH1  BIT(1)
+#define ADCCON2_SCH0  BIT(0)
+
+/* ADCCON3 */
+#define ADCCON3_EREF1 BIT(7)
+#define ADCCON3_EREF0 BIT(6)
+#define ADCCON3_EDIV1 BIT(5)
+#define ADCCON3_EDIV0 BIT(4)
+#define ADCCON3_ECH3  BIT(3)
+#define ADCCON3_ECH2  BIT(2)
+#define ADCCON3_ECH1  BIT(1)
+#define ADCCON3_ECH0  BIT(0)
+
+/* PERCFG */
+#define PERCFG_T1CFG BIT(6)
+#define PERCFG_T3CFG BIT(5)
+#define PERCFG_T4CFG BIT(4)
+#define PERCFG_U1CFG BIT(1)
+#define PERCFG_U0CFG BIT(0)
+
+/* UxCSR */
+#define UxCSR_MODE    BIT(7)
+#define UxCSR_RE      BIT(6)
+#define UxCSR_SLAVE   BIT(5)
+#define UxCSR_FE      BIT(4)
+#define UxCSR_ERR     BIT(3)
+#define UxCSR_RX_BYTE BIT(2)
+#define UxCSR_TX_BYTE BIT(1)
+#define UxCSR_ACTIVE  BIT(0)
+
+/* IEN2 */
+#define IEN2_WDTIE   BIT(5)
+#define IEN2_P1IE    BIT(4)
+#define IEN2_UTX1IE  BIT(3)
+#define IEN2_UTX0IE  BIT(2)
+#define IEN2_P2IE    BIT(1)
+#define IEN2_RFIE    BIT(0)
+
+/* PICTL */
+#define PICTL_PADSC   BIT(6)
+#define PICTL_P2ICON  BIT(3)
+#define PICTL_P1ICONH BIT(2)
+#define PICTL_P1ICONL BIT(1)
+#define PICTL_P0ICON  BIT(0)
+
+/* DMAARM */
+#define DMAARM_ABORT   BIT(7)
+#define DMAARM_DMAARM4 BIT(4)
+#define DMAARM_DMAARM3 BIT(3)
+#define DMAARM_DMAARM2 BIT(2)
+#define DMAARM_DMAARM1 BIT(1)
+#define DMAARM_DMAARM0 BIT(0)
+
+/* DMAREQ */
+#define DMAREQ_DMAREQ4 BIT(4)
+#define DMAREQ_DMAREQ3 BIT(3)
+#define DMAREQ_DMAREQ2 BIT(2)
+#define DMAREQ_DMAREQ1 BIT(1)
+#define DMAREQ_DMAREQ0 BIT(0)
+
+/* DMAIRQ */
+#define DMAIRQ_DMAIF4  BIT(4)
+#define DMAIRQ_DMAIF3  BIT(3)
+#define DMAIRQ_DMAIF2  BIT(2)
+#define DMAIRQ_DMAIF1  BIT(1)
+#define DMAIRQ_DMAIF0  BIT(0)
 
 #endif /* __CC2540_H__ */
