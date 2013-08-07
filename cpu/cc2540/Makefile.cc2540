@@ -33,9 +33,10 @@ CLEAN += *.lnk *.lk *.sym *.lib *.ihx *.rel *.mem *.rst *.asm *.hex
 CLEAN += *.omf *.cdb *.banks *.flags *.banked-hex
 CLEAN += symbols.c symbols.h
 
-CONTIKI_CPU_DIRS = .
+CONTIKI_CPU_DIRS = . dev
 
 CONTIKI_SOURCEFILES += clock.c
+CONTIKI_SOURCEFILES += uart0.c
 
 CONTIKI_ASMOBJECTFILES = $(addprefix $(OBJECTDIR)/,$(CONTIKI_ASMFILES:.S=.rel))
 

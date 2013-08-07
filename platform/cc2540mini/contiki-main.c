@@ -43,6 +43,7 @@
 #include "sys/ctimer.h"
 #include "sys/autostart.h"
 #include "dev/leds.h"
+#include "dev/uart0.h"
 
 static void
 board_init(void)
@@ -51,6 +52,8 @@ board_init(void)
   leds_init();
 
   leds_off(LEDS_ALL);
+
+  uart0_init();
 
   /* Enable all interrupts */
   EA  = 1;
